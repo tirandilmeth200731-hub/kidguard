@@ -1,0 +1,50 @@
+{% extends "layout.html" %}
+
+{% block title %}Dashboard Overview{% endblock %}
+
+{% block content %}
+<div class="card-container">
+    {% for stat in stats %}
+    <div class="card">
+        <div class="card-header">
+            <div class="avatar">{{ stat.child.avatar }}</div>
+            <div>
+                <h2>{{ stat.child.name }}</h2>
+                <span style="color: var(--text-muted); font-size: 0.9rem;">Age {{ stat.child.age }}</span>
+            </div>
+        </div>
+        
+        <div class="progress-container">
+            <div class="progress-info">
+                <span>Daily Screen Time</span>
+                <span>{{ stat.total_time }} / {{ stat.max_limit }} mins</span>
+            </div>
+            <div class="progress-bar-bg">
+                <div class="progress-bar-fill {% if stat.percentage > 85 %}danger{% endif %}" style="width: {{ stat.percentage }}%;"></div>
+            </div>
+        </div>
+
+        <div style="margin-top: 1.5rem;">
+            <h3 style="font-size: 1rem; margin-bottom: 10px; color: var(--text-muted);">Connected Devices</h3>
+            <ul style="list-style: none;">
+                {% for d in stat.devices %}
+                <li style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; padding-bottom: 8px; border-bottom: 1px solid var(--card-border);">
+                    <span><i class="{% if d.type == 'Tablet' %}fa-solid fa-tablet-screen-button{% else %}fa-solid fa-mobile-screen-button{% endif %}" style="margin-right: 8px; color: var(--accent-mint);"></i> {{ d.name }}</span>
+                    <div style="display: flex; gap: 10px; align-items: center;">
+                        {% if d.school_mode %}
+                            <span class="badge badge-school">School Mode On</span>
+                        {% endif %}
+                        <form method="POST" action="{{ url_for('toggle_lock', device_id=d.id) }}" style="margin: 0;">
+                            <button type="submit" class="btn" style="padding: 4px 10px; font-size: 0.8rem; background: {% if d.is_locked %}var(--danger-gradient){% else %}rgba(255,255,255,0.1){% endif %}; color: white;">
+                                <i class="fa-solid {% if d.is_locked %}fa-lock{% else %}fa-lock-open{% endif %}"></i> {% if d.is_locked %}Locked{% else %}Lock{% endif %}
+                            </button>
+                        </form>
+                    </div>
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}

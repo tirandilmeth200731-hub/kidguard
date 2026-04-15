@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}Live Location Tracking{% endblock %}
+
+{% block content %}
+<div class="card" style="margin-bottom: 2rem; padding: 0; overflow: hidden; height: 600px; position: relative;">
+    <!-- Real OpenStreetMap Interactive Background -->
+    <iframe width="100%" height="100%" frameborder="0" scrolling="no" marginheight="0" marginwidth="0" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.15%2C51.51%2C-0.12%2C51.53&amp;layer=mapnik" style="position: absolute; width: 100%; height: 100%; border: none; opacity: 0.7; filter: contrast(1.2) grayscale(0.8) hue-rotate(180deg);"></iframe>
+
+    <!-- UI Overlay -->
+    <div style="position: absolute; top: 20px; left: 20px; z-index: 10; background: rgba(15, 32, 39, 0.95); padding: 1.2rem; border-radius: 12px; border: 1px solid var(--accent-mint); width: 320px; box-shadow: 0 10px 30px rgba(0,0,0,0.5);">
+        <h3 style="margin-bottom: 15px; font-size: 1.2rem; display: flex; align-items: center; gap: 8px;">
+            <i class="fa-solid fa-satellite-dish" style="color: var(--accent-green);"></i> Active GPS Feed
+        </h3>
+        
+        <div style="margin-bottom: 15px; padding-bottom: 15px; border-bottom: 1px solid var(--card-border);">
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <span style="font-size: 2rem;">👦</span>
+                <div>
+                    <strong style="font-size: 1.1rem;">Tommy's iPad</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-solid fa-person-walking"></i> Moving (12 mph) - School</span>
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <div style="display: flex; align-items: center; gap: 15px;">
+                <span style="font-size: 2rem;">👧</span>
+                <div>
+                    <strong style="font-size: 1.1rem;">Emma's iPhone</strong><br>
+                    <span style="font-size: 0.85rem; color: var(--text-muted);"><i class="fa-solid fa-location-dot"></i> Stationary - Local Library</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Map Pins -->
+    <div style="position: absolute; top: 40%; left: 35%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center; animation: bounce 2s infinite;">
+        <div style="background: white; border-radius: 50%; padding: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+            <span style="font-size: 2rem;">👦</span>
+        </div>
+        <div style="width: 18px; height: 18px; background: var(--accent-mint); border-radius: 50%; border: 3px solid white; margin-top: -5px; box-shadow: 0 0 10px var(--accent-mint);"></div>
+    </div>
+
+    <div style="position: absolute; top: 65%; left: 60%; transform: translate(-50%, -50%); display: flex; flex-direction: column; align-items: center;">
+        <div style="background: white; border-radius: 50%; padding: 8px; box-shadow: 0 4px 15px rgba(0,0,0,0.5);">
+            <span style="font-size: 2rem;">👧</span>
+        </div>
+        <div style="width: 18px; height: 18px; background: var(--danger); border-radius: 50%; border: 3px solid white; margin-top: -5px; box-shadow: 0 0 10px var(--danger);"></div>
+    </div>
+</div>
+
+<style>
+@keyframes bounce {
+    0%, 100% { transform: translate(-50%, -50%) translateY(0); }
+    50% { transform: translate(-50%, -50%) translateY(-10px); }
+}
+</style>
+{% endblock %}

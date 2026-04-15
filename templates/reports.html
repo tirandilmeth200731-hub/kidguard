@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+
+{% block title %}Usage Reports{% endblock %}
+
+{% block content %}
+<div class="card" style="margin-bottom: 2rem;">
+    <h2>Top Apps Content Breakdown</h2>
+    <p style="color: var(--text-muted); margin-bottom: 1.5rem; font-size: 0.9rem;">Activity grouped by all children for today</p>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>App Name</th>
+                <th>Child</th>
+                <th>Total Time Spent</th>
+                <th>Status</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for act in activities %}
+            <tr>
+                <td><strong>{{ act.app_name }}</strong></td>
+                <td>
+                    <span style="display: flex; align-items: center; gap: 8px;">
+                        <span>{{ act.avatar }}</span> {{ act.child_name }}
+                    </span>
+                </td>
+                <td>{{ act.total_duration }} mins</td>
+                <td>
+                    {% if act.total_duration > 60 %}
+                        <span class="badge" style="background: rgba(255, 75, 43, 0.2); color: #ff416c;">High Usage</span>
+                    {% else %}
+                        <span class="badge" style="background: rgba(56, 239, 125, 0.2); color: #38ef7d;">Normal</span>
+                    {% endif %}
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock %}

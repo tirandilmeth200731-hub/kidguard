@@ -1,0 +1,79 @@
+{% extends "layout.html" %}
+
+{% block title %}System Settings{% endblock %}
+
+{% block content %}
+<div class="card-container">
+    <!-- Account Settings -->
+    <div class="card">
+        <h2 style="font-size: 1.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 10px;">
+            <i class="fa-solid fa-user" style="color: var(--accent-mint); margin-right: 10px;"></i> Account Details
+        </h2>
+        
+        <div class="form-group">
+            <label>Parent Name</label>
+            <input type="text" value="Sarah Reynolds" class="form-control" disabled style="opacity: 0.7;">
+        </div>
+        <div class="form-group">
+            <label>Email Address</label>
+            <input type="email" value="sarah.parent@email.com" class="form-control" disabled style="opacity: 0.7;">
+        </div>
+        <div class="form-group">
+            <label>Admin PIN</label>
+            <input type="password" value="12345" class="form-control" disabled style="opacity: 0.7;">
+        </div>
+    </div>
+
+    <!-- Live Website Filter Feature -->
+    <div class="card">
+        <h2 style="font-size: 1.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 10px;">
+            <i class="fa-solid fa-ban" style="color: var(--danger); margin-right: 10px;"></i> Global Website Blocklist
+        </h2>
+        
+        <form method="POST" action="{{ url_for('add_block') }}" style="display: flex; gap: 10px; margin-bottom: 1.5rem;">
+            <input type="text" name="url" placeholder="e.g. facebook.com" class="form-control" required>
+            <button type="submit" class="btn btn-primary" style="width: auto;">Block</button>
+        </form>
+
+        <ul style="list-style: none;">
+            {% for site in blocked %}
+            <li style="display: flex; justify-content: space-between; align-items: center; padding: 12px; background: rgba(0,0,0,0.2); border-radius: 8px; margin-bottom: 8px;">
+                <span><i class="fa-solid fa-globe" style="color: var(--text-muted); margin-right: 10px;"></i> {{ site.url }}</span>
+                <form method="POST" action="{{ url_for('delete_block', id=site.id) }}" style="margin: 0;">
+                    <button type="submit" style="background: none; border: none; color: var(--danger); cursor: pointer; font-size: 1.1rem;"><i class="fa-solid fa-trash"></i></button>
+                </form>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+
+    <!-- Notification Preferences -->
+    <div class="card">
+        <h2 style="font-size: 1.2rem; margin-bottom: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 10px;">
+            <i class="fa-solid fa-bell" style="color: #ffd700; margin-right: 10px;"></i> Alerts & Notifications
+        </h2>
+        
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <span>Weekly Email Reports</span>
+            <label class="switch">
+                <input type="checkbox" checked disabled>
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px;">
+            <span>Push Notifications</span>
+            <label class="switch">
+                <input type="checkbox" checked disabled>
+                <span class="slider"></span>
+            </label>
+        </div>
+        <div style="display: flex; justify-content: space-between; align-items: center;">
+            <span>Limit Reached Warnings</span>
+            <label class="switch">
+                <input type="checkbox" checked disabled>
+                <span class="slider"></span>
+            </label>
+        </div>
+    </div>
+</div>
+{% endblock %}

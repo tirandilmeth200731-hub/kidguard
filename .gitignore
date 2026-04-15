@@ -1,0 +1,30 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+*.egg-info/
+dist/
+build/
+
+# Database (do not upload real data)
+*.db
+*.sqlite3
+
+# Environment
+.env
+venv/
+.venv/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Temp scripts
+make_gantt.py
+make_docx.py
+extract_text.py
+convert.py
+data.txt
+project_data_extracted.txt

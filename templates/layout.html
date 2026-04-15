@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>KidGuard | Parental Control System</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <nav>
+        <div class="logo">
+            <i class="fa-solid fa-shield-halved"></i>
+            <div class="logo-text">Kid<span>Guard</span></div>
+        </div>
+        <ul class="nav-links">
+            <li><a href="{{ url_for('dashboard') }}" class="{% if request.endpoint == 'dashboard' %}active{% endif %}"><i class="fa-solid fa-chart-pie"></i> Dashboard</a></li>
+            <li><a href="{{ url_for('time_limits') }}" class="{% if request.endpoint == 'time_limits' %}active{% endif %}"><i class="fa-solid fa-clock"></i> Time Limits</a></li>
+            <li><a href="{{ url_for('reports') }}" class="{% if request.endpoint == 'reports' %}active{% endif %}"><i class="fa-solid fa-chart-bar"></i> Usage Reports</a></li>
+            <li style="margin-top: 2rem;"><a href="{{ url_for('location') }}" class="{% if request.endpoint == 'location' %}active{% endif %}"><i class="fa-solid fa-map-location-dot"></i> Live Location</a></li>
+            <li style="margin-top: 0.5rem;"><a href="{{ url_for('settings') }}" class="{% if request.endpoint == 'settings' %}active{% endif %}"><i class="fa-solid fa-gear"></i> Settings</a></li>
+        </ul>
+    </nav>
+    <main>
+        <header>
+            <h1>{% block title %}{% endblock %}</h1>
+            <div class="user-profile">
+                <i class="fa-regular fa-bell"></i>
+                <img src="https://ui-avatars.com/api/?name=Sarah+Reynolds&background=11998e&color=fff" alt="Sarah Reynolds" style="border-radius: 50%; width: 35px;">
+                <span>Sarah Reynolds</span>
+            </div>
+        </header>
+
+        <section class="content">
+            {% block content %}{% endblock %}
+        </section>
+    </main>
+</body>
+</html>
