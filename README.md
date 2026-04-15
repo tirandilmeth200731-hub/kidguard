@@ -1,11 +1,11 @@
-# 🛡️ KidGuard — Digital Device Control System for Parents
+# KidGuard — Digital Device Control System for Parents
 
 > **4COM2006 / 4COM2011 — Team Software Project**  
 > University of Hertfordshire | 2026
 
 ---
 
-## 📌 Project Overview
+## Project Overview
 
 **KidGuard** is a web-based parental control dashboard that allows parents to monitor, manage, and restrict their children's digital device usage in real time.
 
@@ -13,7 +13,7 @@ Built as a full-stack prototype using **Python**, **Flask**, **SQLite**, and **H
 
 ---
 
-## 👥 Team
+## Team
 
 | Member | Role |
 |---|---|
@@ -22,22 +22,22 @@ Built as a full-stack prototype using **Python**, **Flask**, **SQLite**, and **H
 
 ---
 
-## ✨ Features
+## Features
 
 | Feature | Description |
 |---|---|
-| 📊 **Parent Dashboard** | Real-time overview of children and device screen time usage |
-| ⏰ **Time Limits** | Set daily screen time limits per device |
-| 🏫 **School Mode** | Block entertainment apps during school hours (9AM–3PM) |
-| 🔒 **Device Locking** | Instantly lock/unlock any child's device |
-| 📈 **Usage Reports** | Aggregated app usage reports with excessive usage alerts |
-| 🗺️ **Live Location** | GPS-based location tracking module |
-| 🚫 **Website Blocklist** | Add/remove blocked websites stored in the database |
-| ⚙️ **Settings** | Account details and notification preferences |
+| **Parent Dashboard** | Real-time overview of children and device screen time usage |
+| **Time Limits** | Set daily screen time limits per device |
+| **School Mode** | Block entertainment apps during school hours (9AM–3PM) |
+| **Device Locking** | Instantly lock/unlock any child's device |
+| **Usage Reports** | Aggregated app usage reports with excessive usage alerts |
+| **Live Location** | GPS-based location tracking module |
+| **Website Blocklist** | Add/remove blocked websites stored in the database |
+| **Settings** | Account details and notification preferences |
 
 ---
 
-## 🛠️ Tech Stack
+## Tech Stack
 
 | Layer | Technology |
 |---|---|
@@ -50,7 +50,7 @@ Built as a full-stack prototype using **Python**, **Flask**, **SQLite**, and **H
 
 ---
 
-## 🗄️ Database Schema
+## Database Schema
 
 ```
 child          → id, name, age, avatar
@@ -61,7 +61,18 @@ blocked_site   → id, url
 
 ---
 
-## 🚀 How to Run
+## Prerequisites & Requirements
+
+Before running the application, ensure you have the following installed on your system:
+- **Python 3.8+** (We recommend Python 3.12)
+- **pip** (Python package installer)
+
+You also need to install the project dependencies listed in `requirements.txt`:
+- `Flask==3.0.3`
+
+---
+
+## How to Run
 
 ### Option 1 — Windows (Easy)
 1. Double-click **`run_kidguard.bat`**
@@ -81,7 +92,7 @@ Then open `http://localhost:5000` in your browser.
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 KidGuard/
@@ -106,7 +117,7 @@ KidGuard/
 
 ---
 
-## 🔐 Security Considerations
+## Security Considerations
 
 - All SQL queries use **parameterised statements** to prevent SQL injection
 - All child and device data is stored **locally** — no external cloud transmission
@@ -114,7 +125,7 @@ KidGuard/
 
 ---
 
-## 📚 References
+## References
 
 1. Anderson, M. & Jiang, J. (2023). *Teens, Social Media and Technology*. Pew Research Center.
 2. Common Sense Media. (2022). *The Common Sense Census: Media Use by Tweens and Teens*.
@@ -125,6 +136,6 @@ KidGuard/
 
 ---
 
-## 📄 Licence
+## Licence
 
 This project was developed as part of a University of Hertfordshire academic submission. All rights reserved.
